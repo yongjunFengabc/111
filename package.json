@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "webpack": "^5.84.1"
-  },
-  "devDependencies": {
-    "babel-loader": "^9.1.2"
-  }
-}
