@@ -4,26 +4,29 @@ import { connect } from 'react-redux'
 
 
 export class Listshow extends Component {
-    state={
-        arr:[111,333]
-    }
+
   render() {
+    const {todos}=this.props;
     return (
       <div>
         <ul>
-           {this.state.arr.map(item=>{return <li>{item}</li>})}
+           {/* {this.todos.map(item=>{return <li>{item}</li>})} */}
+           {todos.map((item,index)=>{return <li key={index}>{item}</li>})}
         </ul>
+        {/* <p>{this.todos}</p> */}
+        <p>这里应该有数据</p>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-    const {byIds,allIds}=state.todos||{};
-    const todos=allIds&&allIds.length?allIds.map(id=>(byIds?{...byIds[id],id}:null)):null;
+    // const {byIds,allIds}=state.todos||{};
+    const todos=state.list;
+    // const todos=allIds&&allIds.length?allIds.map(id=>(byIds?{...byIds[id],id}:null)):null;
     return {todos};
 }
 
 // const mapDispatchToProps = {}
 
-export default connect(mapStateToProps)(Listshow)
+export default connect(mapStateToProps,null)(Listshow)
