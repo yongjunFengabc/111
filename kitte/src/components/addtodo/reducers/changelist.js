@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-const initialState=[111,2,333];
+const initialState=['吃饭','写程序','工作'];
 export default function lists (state = initialState, action) {
 const {type,payload={}}=action;
     switch (type){

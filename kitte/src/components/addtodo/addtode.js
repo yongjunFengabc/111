@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 // import {increment} from './addist'
 import {changelist,setlist} from './action'
 // import reducers from './reducers';
+
+import Listshow from './listshow';
 export class Addtode extends Component {
     // state={};
     constructor(props){
@@ -26,9 +28,10 @@ export class Addtode extends Component {
         value={this.props.value}></input>
         <button onClick={OnlistChange}>add</button>
         {/* <p>{datalist.join('')}</p> */}
-        <div>
+        {/* <div>
             <p>{datalist.join(' ')}</p>
-        </div>
+        </div> */}
+       <Listshow/>
       </div>
     )
   }

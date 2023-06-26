@@ -6,7 +6,13 @@ import Home from './components/first/first.tsx';
 import React, { Component } from "react";
 import Counter from './features/counter/Counter';
 import Addtode from './components/addtodo/addtode';
-import Todolist from './components/addtodo/listshow'
+
+import Card from './components/card/main';
+import Navbar from './common/navbar';
+import Read from './components/pdfread/Read'
+// import { Router } from 'express';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { AiFillBug } from "react-icons/ai"
 class App extends Component {
     state = {
         counter: 0
@@ -20,16 +26,20 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-              <Home name="typescript" enthusiasmLevel={4}/>
-                <h1>I'm configuring setting up Webpack!!!</h1>
-                <p>{`The count now is: ${this.state.counter}`}</p>
-                <button onClick={this.handleClick}>Click me</button>
-                <Counter/>
-                <div>
-                    <Addtode></Addtode>
-                    <Todolist></Todolist>
-                </div>
+                <Router>
+                     <Navbar />
+                     <Switch>
+                    <Route path='/' exact component={Home} />
+                    <Route path='/reports' component={Addtode} />
+                    <Route path='/products' component={Card} />
+                    <Route path='/tool' component={Counter}></Route>
+                    <Route path='/pdfread' component={Read} />
+                    </Switch>
+
+                </Router>
+             
             </div>
+        
         );
     }
 }

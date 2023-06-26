@@ -14,7 +14,7 @@ export class Listshow extends Component {
            {todos.map((item,index)=>{return <li key={index}>{item}</li>})}
         </ul>
         {/* <p>{this.todos}</p> */}
-        <p>这里应该有数据</p>
+        {/* <p>这里应该有数据</p> */}
       </div>
     )
   }

@@ -6,7 +6,7 @@ export interface Props{
     name:string;
     enthusiasmLevel?: number;
 }
-function Home({name,enthusiasmLevel=1}:Props){
+function Home({name='web',enthusiasmLevel=1}:Props){
     const [flag,setFlag]=useState(0);
 
     if(enthusiasmLevel<=0){
@@ -19,6 +19,7 @@ function Home({name,enthusiasmLevel=1}:Props){
     return (
         <div>
          <p>hello{name + getExNumber(enthusiasmLevel)}</p>
+         <h1>I'm configuring setting up Webpack!!!</h1>
          <p className={flag?'red':'black'}>改变样式</p>
          <p className='black'>黑色的</p>
          <button onClick={classChange}>点击改变颜色</button>
