@@ -6,7 +6,7 @@ import Home from './components/first/first.tsx';
 import React, { Component } from "react";
 import Counter from './features/counter/Counter';
 import Addtode from './components/addtodo/addtode';
-
+import readruliu from './components/ruliuKnowleage/main2';
 import Card from './components/card/main';
 import Navbar from './common/navbar';
 import Read from './components/pdfread/Read'
@@ -26,20 +26,23 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Router>
+                
+                   <Router>
                      <Navbar />
                      <Switch>
+                       
                     <Route path='/' exact component={Home} />
                     <Route path='/reports' component={Addtode} />
                     <Route path='/products' component={Card} />
                     <Route path='/tool' component={Counter}></Route>
                     <Route path='/pdfread' component={Read} />
+                    <Route path="/ruliuread" component={readruliu}></Route>
+    
                     </Switch>
 
-                </Router>
-             
-            </div>
-        
+                </Router>   
+                </div>
+
         );
     }
 }

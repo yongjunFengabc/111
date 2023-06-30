@@ -34,4 +34,10 @@ export const SidebarData = [
     icon: <AiFillFilePdf />,
     cName: 'nav-text'
   },
+  {
+    title: 'ruliu-read',
+    path: '/ruliuread',
+    icon: <AiFillFilePdf />,
+    cName: 'nav-text'
+  },
 ];
