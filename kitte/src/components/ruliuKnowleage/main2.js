@@ -1,6 +1,6 @@
 import React, { useState ,useEffect} from 'react';
 // url='https://ku.baidu-int.com/knowledge/HFVrC7hq1Q/pKzJfZczuc/WTP3bCqlR-/qzUGU-Ukrip3V-' 
-import test from './ruliu'
+// import test from './ruliu'
 import tabletoparam from './testtable'
 import './ruliu.css'
 // import { set } from 'immer/dist/internal';
@@ -26,9 +26,9 @@ import './ruliu.css'
 // };
 
 function Spider() {
-  const [result, setResult] = useState('');
+  
   const [data,setData]=useState([]);
-  const [params,setParams]=useState({});
+  
   const forceconfig={
           catalogId: 679,
           emiBox: 1,
@@ -42,47 +42,53 @@ function Spider() {
           state: 2
     }
     const mapProblemindex={
-      "介绍":55,
-      "操作":56,
-      "优化":57,
-      "政策":58,
-      "审核":59,
-      "财务":60,
-      "反馈":61,
-      "其他":62,
-      "客服":63,
+   
     }
     const MapEmiKLGindex={
-        "商业阿拉丁":39,
-        "品牌产品":40,
-        "百度统计":41,
-        "爱番番":42,
-        "爱采购":43,
-        "公有库":44,
-        "搜索推广":45,
-        "信息流推广":46,
-        "商业开发者中心":47,
-        "基木鱼":48,
-        "观星盘":49,
-        "百度指数":50,
-        "度小店":51,
-        "售前":54,
+      
     }
   useEffect(() => {
     // console.log(count);
     console.log('useeffect',data)
     // console.log(data)
   }, [data]);
-  // const handleClick = async () => {
-  //   console.log(test)
-  //   try {
-  //     const response = await fetch(url);
-  //     const data = await response.text();
-  //     setResult(data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+
+  const handleClick = async () => {
+    // console.log(test)
+    try {
+      const response = await fetch('http://www.baidu.com');
+      const data = await response.text();
+      // setResult(data);
+      console.log(data)
+    } catch (error) {
+      console.error(error);
+    }
+    // const cheerio = require('cheerio');
+    // const xhr = new XMLHttpRequest();
+
+    // // 定义爬取的URL
+    // const url = 'www.baidu.com/';
+
+    // // 发送HTTP请求并获取响应
+    // xhr.open('GET', url, true);
+    // xhr.send();
+
+    // xhr.onreadystatechange = function() {
+    // if (xhr.readyState === 4 && xhr.status === 200) {
+    //     // 使用cheerio加载HTML文档
+    //     const $ = cheerio.load(xhr.responseText);
+    //      console.log($)
+    //     // 获取需要爬取的元素
+    //     const links = $('a');
+    // console.log($)
+    //     // 输出爬取的元素
+    //     links.each(function () {
+    //     console.log($(this).attr('href'));
+    //     });
+    // }
+    // };
+    
+  };
     function gettable(){
       const cheerio =require('cheerio')
       const $=cheerio.load(tabletoparam)
@@ -94,24 +100,23 @@ function Spider() {
         // console.log("每个tr",eachtr.children)
         // let length=eachtr.length;
         let objparam={}
-        console.log(i);
-        // const $2= cheerio.load(eachtr[2]);
-        // console.log("huoqudaan",$(eachtr[2]).text());
-        // console.log("huoqudaan-html",$(eachtr[2]).html());
-
-        // console.log("contentDomGet",eachtr[2]);
+   
         for(let j=0;j<6;j++){
           let objecttitle=paramstitle[j];
           if(j===4)//for problemsort
           {
              objparam[objecttitle]=MaptheEmiProblemSort($(eachtr[j]).text())
           }
-          else if(j===2){
+          else if(j===2){//for answercontent html
             objparam[objecttitle]=$(eachtr[j]).html()
+            objparam['mobileContent']=$(eachtr[j]).html();
           }
           else if(j===5)//for emiklg
           {
-            objparam[objecttitle]=MaptheEmiKLG($(eachtr[j]).text())
+            const textklg=$(eachtr[j]).text().split('，').map((item)=>MaptheEmiKLG(item));
+            // console.log('klgToArray',textklg)
+            // objparam[objecttitle]=MaptheEmiKLG($(eachtr[j]).text())
+            objparam[objecttitle]=textklg
           }
           else
           {
@@ -125,41 +130,8 @@ function Spider() {
       //  console.log(params)
        setData(data=>[...data,objparam])
       }
-      console.log(tr);
+      // console.log(tr);
     }
-  function getContent2(){
-    const cheerio = require('cheerio');
-    const $ = cheerio.load(test);
-    const lists=$('.mp-list-item');
-    const try2=$('span').attr("data-slate-string",true);
-    const try4=$('span span span').prop("data-slate-string",true);
-    try4.each(function(){
-      console.log($(this))
-      console.log("datatext",$(this)[0].children[0].data)
-      setData(prvedata=>[...prvedata,$(this)[0].children[0].data]);
-      console.log("data",data);
-    })
-    // setData([5]);
-    const try3=$('span [data-slate-string=true]')
-    console.log("try2",try2);
-    console.log('try3',try3);
-    console.log('try4',try4);
-    console.log("data",data);
-//     lists.each((item)=>{
-// while(item.children&&item.children[0])
-//     })
-    console.log(lists)
-  }
-
-  function gettext(element){//对于单个的单元格内的数据，获取具体的数值
-     while(element&&element.children){
-      element=element.children[0];
-      // console.log("elementfindtext",element)
-     }
-    console.log("data",element.data)
-     return element.data
-
-  }
 
   function MaptheEmiProblemSort(answer){
   if(mapProblemindex[answer]){
@@ -168,6 +140,7 @@ function Spider() {
   }else{
     return 62//默认其他
   }}
+
   function MaptheEmiKLG(answer){
    if(MapEmiKLGindex[answer]){
     return MapEmiKLGindex[answer]
@@ -175,12 +148,40 @@ function Spider() {
     return 45//待确认，新增知识库，在选择知识库列表的时候，没有兜底选项，如果出现无法识别的类别，可能会报错
    }
   }
+const SIZE=2*1024*1024;
+  function uploadFile(file){
+let FileList=[];
+let cur=0;
+while (cur<file.size){
+  FileList.push(file.slice(cur,cur+SIZE));
+  cur+=SIZE;
+}
+uploadOneByOne(FileList,file.name);
+  }
+
+  async function endall(){
+    
+  }
+  async function uploadOneByOne(FileList,name){
+    let list=FileList.map((item,index)=>{
+      const formdata = new FormData() 
+      formdata.append('file',item)
+      formdata.append('hash',index)
+      formdata.append('name',name)
+      return {formdata}
+    })
+      .map(({formdata})=>Request({url:'xxx',data:formdata}))
+      await Promise.all(list) // 所有请求完成后，执行回调函数
+      await endall()// 告知完成
+  }
+
+  
   return (
     <div className='parent'>
-      {/* <button onClick={handleClick}>爬取页面</button> */}
-      <div> <button className='children' onClick={getContent2}>获取本地知识库html的列表</button></div>
+      {/* <button onClick={handleClick}>爬取www.baidu.com页面</button> */}
+      {/* <div> <button className='children' onClick={getContent2}>获取本地知识库html的列表</button></div> */}
      <div> <button className='children' onClick={gettable}>获取table的tr,模拟params传递参数</button></div>
-     
+     <div><input type='file'></input><button onClick={uploadFile}>上传</button><p>用到断点续传</p></div>
       {/* <div className='children'><p>pppp</p></div> */}
       {/* <iframe src="https://ku.baidu-int.com/knowledge/HFVrC7hq1Q/pKzJfZczuc/WTP3bCqlR-/qzUGU-Ukrip3V-"></iframe> */}
     </div>

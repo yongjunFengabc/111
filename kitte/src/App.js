@@ -9,7 +9,8 @@ import Addtode from './components/addtodo/addtode';
 import readruliu from './components/ruliuKnowleage/main2';
 import Card from './components/card/main';
 import Navbar from './common/navbar';
-import Read from './components/pdfread/Read'
+import Read from './components/pdfread/Read';
+import TableList from './components/tableFilter/main';
 // import { Router } from 'express';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AiFillBug } from "react-icons/ai"
@@ -26,9 +27,12 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                 
+                <div className='right'>
+
                 
                    <Router>
-                     <Navbar />
+                   <Navbar />
                      <Switch>
                        
                     <Route path='/' exact component={Home} />
@@ -37,10 +41,11 @@ class App extends Component {
                     <Route path='/tool' component={Counter}></Route>
                     <Route path='/pdfread' component={Read} />
                     <Route path="/ruliuread" component={readruliu}></Route>
-    
+                    <Route path="/table-filter" component={TableList} />
                     </Switch>
 
                 </Router>   
+                </div>
                 </div>
 
         );

@@ -1,0 +1,2 @@
+const list=[{key:"1",name:'jack',tel:'123-456-7890',location:'palace one 124',single:'yes',busy:'no'},{key:'2',name:'jill',tel:'123-45',location:'palace one 124',single:'yes',busy:'no'},{key:"3",name:'jack',tel:'123-456-7890',location:'palace one 124',single:'yes',busy:'no'},{key:'4',name:'jmaryl',tel:'123-45-888,',location:'palace one 124',single:'yes',busy:'yes'}]
+export default list

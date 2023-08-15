@@ -1,0 +1,20 @@
+.format{
+    margin:30px;
+    background-color: aliceblue;
+}
+
+.table{
+    margin:20px;
+}
+
+.filter{
+    display:flex;
+    /* margin:auto; */
+    /* padding: auto; */
+    /* float:left; */
+    margin:20px;
+}
+
+.button{
+    margin:auto;
+}

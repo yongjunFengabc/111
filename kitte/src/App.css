@@ -37,6 +37,11 @@
   font-size: 3rem;
 }
 
+.right{
+  margin-left: 250px;
+  /* background-color: rgb(237, 230, 230); */
+  /* padding-bottom: 20px; */
+}
 
 @keyframes App-logo-spin {
   from {

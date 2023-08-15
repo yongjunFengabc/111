@@ -40,4 +40,10 @@ export const SidebarData = [
     icon: <AiFillFilePdf />,
     cName: 'nav-text'
   },
+  {
+    title:'table-filter',
+    path:'/table-filter',
+    icon: <FaIcons.FaCartPlus />,
+    cName: 'nav-text'
+  }
 ];
